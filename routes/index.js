@@ -24,4 +24,27 @@ router.post('/login', function(req, res, next) {
 	res.json({name:username,pwd:pwd});
 });
 
+router.post('/msg', function(req, res, next) {
+	let msg = JSON.parse(Object.keys(req.body)[0]);
+	let srcid = msg.srcid;
+	let dstid = msg.dstid;
+	let text = msg.text;
+	let query = "insert into msg (srcid,dstid,text) values (" + 
+		srcid + "," + dstid + "," + text + ")";
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=>{
+	  	res.send(rows);
+	  	mysql.connect.end();
+	})
+});
+
+router.get('/msg', function(req, res, next) {
+	let query = "select * from msg";
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=>{
+		res.send(rows);
+		mysql.connect.end();
+	})
+})
+
 module.exports = router;
