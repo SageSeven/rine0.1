@@ -25,6 +25,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/msg', function(req, res, next) {
+	console.log(Object.keys(req.body)[0]);
 	let msg = JSON.parse(Object.keys(req.body)[0]);
 	let srcid = msg.srcid;
 	let dstid = msg.dstid;
