@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 router.post('/login', function(req, res, next) {
 	let username = req.body.username;
 	let pwd = req.body.password;
+	console.log("username:"+username, "pwd:"+pwd);
 	res.json({name:username,pwd:pwd});
 });
 
