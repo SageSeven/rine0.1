@@ -14,9 +14,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-	let username = req.body.username;
-	let pwd = req.body.password;
-	console.log(req.body);
+	let msg = JSON.parse(Object.keys(req.body)[0]);
+	let username = msg.username;
+	let pwd = msg.password;
+	console.log(msg);
 	console.log("username:"+username, "pwd:"+pwd);
 	res.json({name:username,pwd:pwd});
 });
