@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
 	console.log("Post login received.")
+	console.log(Object.keys(req.body)[0]);
 	let msg = JSON.parse(Object.keys(req.body)[0]);
 	let username = msg.username;
 	let pwd = msg.password;
