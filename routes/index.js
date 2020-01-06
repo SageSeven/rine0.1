@@ -41,12 +41,12 @@ router.post('/sendMsg', function(req, res, next) {
 
 router.post('/getMsg', (req, res, next)=>{
 	let msg = JSON.parse(Object.keys(req.body)[0]);
-	let dstid = msg.id;
-	let query = "select * from msg where dstid="+dstid;
+	let dstId = msg.dstId;
+	let query = "select * from msg where dstid="+dstId;
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=> {
 		res.send(rows);
-		query = "drop * from msg where dstid="+dstid;
+		query = "drop * from msg where dstid="+dstId;
 		mysql.connect.query(query);
 	})
 });
