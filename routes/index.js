@@ -34,7 +34,7 @@ router.post('/sendMsg', function(req, res, next) {
 	let dstid = msg.dstid;
 	let text = msg.text;
 	let query = "insert into msg (srcid,dstid,text) values (" + 
-		srcid + "," + dstid + "," + text + ")";
+		srcid + "," + dstid + ",\"" + text + "\")";
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=>{
 	  	res.send(rows);
