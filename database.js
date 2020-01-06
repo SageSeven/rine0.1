@@ -8,10 +8,10 @@ function getDBConnection() {
 			setTimeout(getDBConnection, 2000);
 		}
 	});
-	database.on('error', ()=>{
-		logger.error('db error', err);
+	database.on('error', (err)=>{
+		console.log('db error', err);
 	    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-	        logger.error('db error执行重连:'+err.message);
+	        console.log('db error执行重连:'+err.message);
 	        getDBConnection();
 	    } else {
 	        throw err;
