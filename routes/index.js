@@ -71,6 +71,7 @@ router.post('/signUp', function(req, res, next) {
 		name + "\",\"" + password + "\",\"" + nKey + "\",\"" + eKey + "\")";
 	console.log(query);
 	mysql.connect.query(query, (err, rows, fields)=> {
+		console.log("2");
 		res.send(rows);
 	})
 });
