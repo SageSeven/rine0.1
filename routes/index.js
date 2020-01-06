@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   mysql.getDBConnection();
   mysql.connect.query(query, (err, rows, fields)=>{
   	res.send(rows);
-  	mysql.connect.end();
+  	//mysql.connect.end();
   })
 });
 
@@ -35,7 +35,7 @@ router.post('/msg', function(req, res, next) {
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=>{
 	  	res.send(rows);
-	  	mysql.connect.end();
+	  	//mysql.connect.end();
 	})
 });
 
