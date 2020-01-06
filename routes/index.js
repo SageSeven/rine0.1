@@ -46,7 +46,7 @@ router.post('/getMsg', (req, res, next)=>{
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=> {
 		res.send(rows);
-		query = "drop * from msg where dstid="+dstId;
+		query = "delete from msg where dstid="+dstId;
 		mysql.connect.query(query);
 	})
 });
