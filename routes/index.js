@@ -24,7 +24,7 @@ router.post('/login', function(req, res, next) {
 	res.json({name:username,pwd:pwd});
 });
 
-router.post('/msg', function(req, res, next) {
+router.post('/sendMsg', function(req, res, next) {
 	console.log(Object.keys(req.body)[0]);
 	let msg = JSON.parse(Object.keys(req.body)[0]);
 	let srcid = msg.srcid;
@@ -39,25 +39,25 @@ router.post('/msg', function(req, res, next) {
 	})
 });
 
+router.post('/getMsg', (req, res, next)=>{
+	let msg = let msg = JSON.parse(Object.keys(req.body)[0]);
+	let dstid = msg.id;
+	let query = "select * from msg where dstid="+dstid;
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=> {
+		res.send(rows);
+		query = "drop * from msg where dstid="+dstid;
+		mysql.connect.query(query);
+	})
+});
+
 router.get('/msg', function(req, res, next) {
 	let query = "select * from msg";
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=>{
-		query = "select * from user where name='testUser01' and password='123123'";
-		mysql.connect.query(query, (err, rows, fields)=>{
-			console.log(rows);
-			console.log(rows[0]['name']);
-			query = "select * from user where name='testUser01' and password='123124'";
-			mysql.connect.query(query, (err, rows, fields)=>{
-				console.log(rows);
-				console.log(rows.length==0);
-			});
-		});
 		res.send(rows);
-	})
-	
-	
-})
+	});
+});
 
 router.post('/signup', function(req, res, next) {
 	console.log(Object.keys(req.body)[0]);
