@@ -80,4 +80,15 @@ router.post('/signUp', function(req, res, next) {
 	});
 });
 
+router.post('/getFriend', (req, res, next)=>{
+	console.log(Object.keys(req.body)[0]);
+	let msg = JSON.parse(Object.keys(req.body)[0]);
+	let name = msg.name;
+	let query = "select * from user where name=\""+name+"\""
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=> {
+		res.send(rows);
+	});
+});
+
 module.exports = router;
