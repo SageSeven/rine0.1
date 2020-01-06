@@ -3,4 +3,4 @@ use rine;
 drop table user;
 drop table msg;
 source createdb.sql;
-source testuser.sql;
+source testusers.sql;
