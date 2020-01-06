@@ -73,8 +73,11 @@ router.post('/signUp', function(req, res, next) {
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=> {
 		//console.log("2");
-		res.send("SignUp success.");
-	})
+		query = "select * from user where name=\""+name+"\"";
+		mysql.connect.query(query, (err, rows, fields)=> {
+			res.send(rows);
+		});
+	});
 });
 
 module.exports = router;
