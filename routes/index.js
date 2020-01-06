@@ -17,11 +17,14 @@ router.post('/login', function(req, res, next) {
 	console.log("Post login received.")
 	console.log(Object.keys(req.body)[0]);
 	let msg = JSON.parse(Object.keys(req.body)[0]);
-	console.log(msg);
-	let username = msg.username;
-	let pwd = msg.pwd;
-	console.log("username:"+username, "pwd:"+pwd);
-	res.json({name:username,pwd:pwd});
+	let name = msg.name;
+	let password = msg.password;
+	let query = "select * from user where name=\"" + name + "\" and password=\""+
+		password + "\""
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=> {
+		res.send(rows);
+	})
 });
 
 router.post('/sendMsg', function(req, res, next) {
