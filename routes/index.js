@@ -48,7 +48,7 @@ router.post('/getMsg', (req, res, next)=>{
 		res.send(rows);
 		query = "delete from msg where dstid="+dstId;
 		mysql.connect.query(query);
-	})
+	});
 });
 
 router.get('/msg', function(req, res, next) {
@@ -59,9 +59,18 @@ router.get('/msg', function(req, res, next) {
 	});
 });
 
-router.post('/signup', function(req, res, next) {
+router.post('/signUp', function(req, res, next) {
 	console.log(Object.keys(req.body)[0]);
 	let msg = JSON.parse(Object.keys(req.body)[0]);
+	let name = msg.name;
+	let password = msg.password;
+	let nKey = msg.nKey;
+	let eKey = msg.eKey;
+	let query = "insert into user (name,password,key_n,key_e) values ("+
+		name + "," + password + "," + nKey + "," + eKey + ")";
+	mysql.connect.query(query, (err, rows, fields)=> {
+		res.send(rows);
+	})
 });
 
 module.exports = router;
