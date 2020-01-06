@@ -43,7 +43,7 @@ router.get('/msg', function(req, res, next) {
 	let query = "select * from msg";
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=>{
-		res.send(rows);
+		//res.send(rows);
 		mysql.connect.end();
 	})
 	query = "select * from user where name='testUser01' and password='123123'";
