@@ -40,7 +40,7 @@ router.post('/sendMsg', function(req, res, next) {
 });
 
 router.post('/getMsg', (req, res, next)=>{
-	let msg = let msg = JSON.parse(Object.keys(req.body)[0]);
+	let msg = JSON.parse(Object.keys(req.body)[0]);
 	let dstid = msg.id;
 	let query = "select * from msg where dstid="+dstid;
 	mysql.getDBConnection();
