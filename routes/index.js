@@ -50,7 +50,6 @@ router.get('/msg', function(req, res, next) {
 			mysql.connect.query(query, (err, rows, fields)=>{
 				console.log(rows);
 				console.log(!!rows);
-				mysql.connect.end();
 			});
 		});
 		res.send(rows);
