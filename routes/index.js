@@ -70,6 +70,7 @@ router.post('/signUp', function(req, res, next) {
 	let query = "insert into user (name,password,key_n,key_e) values (\""+
 		name + "\",\"" + password + "\",\"" + nKey + "\",\"" + eKey + "\")";
 	console.log(query);
+	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=> {
 		console.log("2");
 		res.send(rows);
