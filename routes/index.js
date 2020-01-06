@@ -43,22 +43,20 @@ router.get('/msg', function(req, res, next) {
 	let query = "select * from msg";
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=>{
-		//res.send(rows);
+		query = "select * from user where name='testUser01' and password='123123'";
+		mysql.connect.query(query, (err, rows, fields)=>{
+			console.log(rows);
+		});
+		query = "select * from user where name='testUser01' and password='123124'";
+		mysql.connect.query(query, (err, rows, fields)=>{
+			console.log(rows);
+			console.log(!!rows);
+		});
+		res.send(rows);
 		mysql.connect.end();
 	})
-	query = "select * from user where name='testUser01' and password='123123'";
-	mysql.getDBConnection();
-	mysql.connect.query(query, (err, rows, fields)=>{
-		console.log(rows);
-		mysql.connect.end();
-	})
-	query = "select * from user where name='testUser01' and password='123124'";
-	mysql.getDBConnection();
-	mysql.connect.query(query, (err, rows, fields)=>{
-		console.log(rows);
-		console.log(!!rows)
-		mysql.connect.end();
-	})
+	
+	
 })
 
 router.post('/signup', function(req, res, next) {
