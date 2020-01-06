@@ -46,10 +46,11 @@ router.get('/msg', function(req, res, next) {
 		query = "select * from user where name='testUser01' and password='123123'";
 		mysql.connect.query(query, (err, rows, fields)=>{
 			console.log(rows);
+			console.log(rows[0]['name']);
 			query = "select * from user where name='testUser01' and password='123124'";
 			mysql.connect.query(query, (err, rows, fields)=>{
 				console.log(rows);
-				console.log(!!rows);
+				console.log(rows.length==0);
 			});
 		});
 		res.send(rows);
