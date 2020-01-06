@@ -66,14 +66,14 @@ router.post('/signUp', function(req, res, next) {
 	let password = msg.password;
 	let nKey = msg.keyN;
 	let eKey = msg.keyE;
-	console.log("1");
+	//console.log("1");
 	let query = "insert into user (name,password,key_n,key_e) values (\""+
 		name + "\",\"" + password + "\",\"" + nKey + "\",\"" + eKey + "\")";
-	console.log(query);
+	//console.log(query);
 	mysql.getDBConnection();
 	mysql.connect.query(query, (err, rows, fields)=> {
-		console.log("2");
-		res.send(rows);
+		//console.log("2");
+		res.send("SignUp success.");
 	})
 });
 
