@@ -46,6 +46,24 @@ router.get('/msg', function(req, res, next) {
 		res.send(rows);
 		mysql.connect.end();
 	})
+	query = "select * from user where name='testUser01' and password='123123'";
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=>{
+		console.log(rows);
+		mysql.connect.end();
+	})
+	query = "select * from user where name='testUser01' and password='123124'";
+	mysql.getDBConnection();
+	mysql.connect.query(query, (err, rows, fields)=>{
+		console.log(rows);
+		console.log(!!rows)
+		mysql.connect.end();
+	})
 })
+
+router.post('/signup', function(req, res, next) {
+	console.log(Object.keys(req.body)[0]);
+	let msg = JSON.parse(Object.keys(req.body)[0]);
+});
 
 module.exports = router;
