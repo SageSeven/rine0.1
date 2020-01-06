@@ -1,7 +1,7 @@
 use rine;
 insert into user (id,name,password,key_n,key_e) values
 	(
-		5001,
+		1,
 		"testUser01",
 		"123123",
 		"3233",
@@ -9,7 +9,7 @@ insert into user (id,name,password,key_n,key_e) values
 	);
 insert into user (id,name,password,key_n,key_e) values
 	(
-		5002,
+		2,
 		"testUser02",
 		"123123",
 		"3233",
